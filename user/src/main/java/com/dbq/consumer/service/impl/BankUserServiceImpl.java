@@ -2,6 +2,7 @@ package com.dbq.consumer.service.impl;
 
 import com.dbq.common.export.account.BankAccountFeignService;
 import com.dbq.common.model.BankAccount;
+import com.dbq.common.redis.RedisUtils;
 import com.dbq.common.result.PojoResult;
 import com.dbq.consumer.util.HttpUtil;
 import com.dbq.consumer.mapper.BankUserMapper;
@@ -34,11 +35,21 @@ public class BankUserServiceImpl implements BankUserService {
             return null;
         }
 
+        //测试与外部系统的连接
         try {
             HttpUtil.doPost("https://www.huining.info/");
         } catch (Exception e) {
-            System.out.println("-----------   end call ");
+            e.printStackTrace();
         }
+
+        //测试与redis的连接
+        try {
+            RedisUtils.get("test");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        //测试Feign调用
         PojoResult<BankAccount> result = bankAccountFeignService.getBankAccountByUserId(userId);
         result.getContent().setBank(result.getContent().getBank()+System.currentTimeMillis());
         if (!result.isSuccess()) {

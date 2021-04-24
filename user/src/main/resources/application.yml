@@ -20,3 +20,10 @@ eureka:
     prefer-ip-address: true
 mybatis:
   mapper-locations: classpath*:mapper/*.xml
+
+redis:
+  useCluster: false
+  host: 127.0.0.1
+  port: 6379
+  auth: 123456
+  nodes: 127.0.0.1:6379,127.0.0.1:6380,127.0.0.1:6381
