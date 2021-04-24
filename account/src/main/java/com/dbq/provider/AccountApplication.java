@@ -12,8 +12,8 @@ import org.springframework.context.annotation.Import;
 @EnableEurekaClient
 @Import({MybatisConfiguration.class})
 @EnableFeignClients({"com.dbq.common.export.user"})
-@MapperScan(basePackages = "com.springcloud.provider.mapper", markerInterface = BaseMapper.class)
-@SpringBootApplication(scanBasePackages = {"com.springcloud.provider", "com.dbq.common.export.user"})
+@MapperScan(basePackages = "com.dbq.provider.mapper", markerInterface = BaseMapper.class)
+@SpringBootApplication(scanBasePackages = {"com.dbq.provider", "com.dbq.common.export.user"})
 public class AccountApplication {
 
     public static void main(String[] args) {

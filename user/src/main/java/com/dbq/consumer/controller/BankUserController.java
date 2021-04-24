@@ -17,12 +17,6 @@ public class BankUserController {
     @Autowired
     private BankUserService bankUserService;
 
-    /**
-     * 查询指定用户的银行账号
-     *
-     * @param id
-     * @return
-     */
     @GetMapping("/{id}/account")
     public PojoResult<BankAccount> getAccountByUserId(@PathVariable Integer id) {
         return new PojoResult<>(bankUserService.getBankAccount(id));
