@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dbq.mapper.OrderMapper">
+    <resultMap id="BaseResultMap" type="com.dbq.common.model.Order">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <id column="user_id" jdbcType="INTEGER" property="userId"/>
+        <id column="product_id" jdbcType="INTEGER" property="productId"/>
+        <id column="COUNT" jdbcType="INTEGER" property="COUNT"/>
+        <id column="pay_amount" jdbcType="DOUBLE" property="payAmount"/>
+        <id column="status" jdbcType="VARCHAR" property="status"/>
+        <result column="add_time" jdbcType="TIMESTAMP" property="addTime"/>
+        <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime"/>
+
+    </resultMap>
+
+    <cache type="PERPETUAL" eviction="LRU" size="60" blocking="false" flushInterval="24" readOnly="false"/>
+
+
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, user_id, product_id, COUNT, pay_amount, status, add_time, last_update_time
+    </sql>
+    <select id="selectById" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM order WHERE user_id = #{userId,jdbcType=INTEGER}
+    </select>
+
+</mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dbq.mapper.AccountMapper">
+    <!--################################ Mybatis逆向工程生成,请勿编辑! ################################-->
+    <resultMap id="BaseResultMap" type="com.dbq.common.model.Account">
+        <!--@mbg.generated-->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="total" jdbcType="VARCHAR" property="total"/>
+        <result column="lastUpdateTime" jdbcType="TIMESTAMP" property="lastUpdateTime"/>
+        <result column="used" jdbcType="DOUBLE" property="used"/>
+        <result column="balance" jdbcType="DOUBLE" property="balance"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, user_id, total, lastUpdateTime, used, balance
+    </sql>
+    <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from account
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+
+</mapper>

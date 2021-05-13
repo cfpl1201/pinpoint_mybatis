@@ -1,7 +1,7 @@
 package com.dbq.common.export.account;
 
 import com.dbq.common.export.account.fallback.BankAccountFeignFallback;
-import com.dbq.common.model.BankAccount;
+import com.dbq.common.model.Account;
 import com.dbq.common.result.PojoResult;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +20,6 @@ public interface BankAccountFeignService {
      * @return
      */
     @GetMapping("/bank/account/{userId}")
-    PojoResult<BankAccount> getBankAccountByUserId(@PathVariable("userId") Integer userId);
+    PojoResult<Account> getBankAccountByUserId(@PathVariable("userId") Integer userId);
 
 }
