@@ -16,4 +16,4 @@ zuul:
   routes:
     spring-cloud-user-server:
       path: /client/**
-      serviceId: spring-cloud-user-server
+      serviceId: spring-cloud-order-server

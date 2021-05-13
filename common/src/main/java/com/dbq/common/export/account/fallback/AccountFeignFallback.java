@@ -1,6 +1,6 @@
 package com.dbq.common.export.account.fallback;
 
-import com.dbq.common.export.account.BankAccountFeignService;
+import com.dbq.common.export.account.AccountFeignService;
 import com.dbq.common.model.Account;
 import com.dbq.common.result.PojoResult;
 import com.dbq.common.utils.ErrorResultGenerator;
@@ -13,7 +13,7 @@ import static com.dbq.common.constants.ErrorCodeEnum.SYSTEM_ERROR;
  * @create 2018-10-23 14:20
  */
 @Service
-public class BankAccountFeignFallback implements BankAccountFeignService {
+public class AccountFeignFallback implements AccountFeignService {
 
     @Override
     public PojoResult<Account> getBankAccountByUserId(Integer userId) {

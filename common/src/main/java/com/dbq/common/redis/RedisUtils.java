@@ -27,7 +27,7 @@ import java.util.concurrent.TimeUnit;
  * @see RedisUtils#lock(String, int, String)
  *
  */
-@Component("redisUtils")
+//@Component("redisUtils")
 public final class RedisUtils {
 
 	private static Logger logger = LoggerFactory.getLogger(RedisUtils.class);

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @create 2018-10-19 16:58
  */
 @RestController
-@RequestMapping("/bank/account")
+@RequestMapping("/account")
 public class AccountController {
 
     @Autowired

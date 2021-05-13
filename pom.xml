@@ -19,7 +19,7 @@
         <module>eureka</module>
         <module>common</module>
         <module>account</module>
-        <module>user</module>
+        <module>order</module>
         <module>zuul</module>
     </modules>
 

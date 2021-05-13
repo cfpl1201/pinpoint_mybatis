@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.*;
  * @create 2018-10-19 11:58
  */
 @RestController
-@RequestMapping("/bank/user")
+@RequestMapping("/order")
 public class OrderController {
 
     @Autowired
     private OrderService orderService;
 
-    @GetMapping("/{id}/account")
-    public PojoResult<Account> getAccountByUserId(@PathVariable Integer id) {
+    @GetMapping("/{id}/getOrderAndAccount")
+    public PojoResult<Account> getOrderAndAccount(@PathVariable Integer id) {
         return new PojoResult<>(orderService.getBankAccount(id));
     }
 

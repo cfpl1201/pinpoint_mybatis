@@ -14,8 +14,8 @@ import org.springframework.context.annotation.Import;
 @EnableEurekaClient
 @Import({MybatisConfiguration.class, RedisBasicConfig.class})
 @EnableFeignClients("com.dbq.common.export.account")
-@MapperScan(basePackages = "com.dbq.consumer.mapper", markerInterface = BaseMapper.class)
-@SpringBootApplication(scanBasePackages = {"com.dbq.common.export.account", "com.dbq.consumer"})
+@MapperScan(basePackages = "com.dbq.mapper", markerInterface = BaseMapper.class)
+@SpringBootApplication(scanBasePackages = {"com.dbq.common.export.account", "com.dbq"})
 @EnableConfigurationProperties
 public class OrderApplication {
 

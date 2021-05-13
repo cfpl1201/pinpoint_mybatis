@@ -1,6 +1,6 @@
 package com.dbq.service.impl;
 
-import com.dbq.common.export.account.BankAccountFeignService;
+import com.dbq.common.export.account.AccountFeignService;
 import com.dbq.common.model.Account;
 import com.dbq.common.redis.RedisUtils;
 import com.dbq.common.result.PojoResult;
@@ -22,7 +22,7 @@ public class OrderServiceImpl implements OrderService {
     private static final Logger LOGGER = LoggerFactory.getLogger(OrderServiceImpl.class);
 
     @Autowired
-    private BankAccountFeignService bankAccountFeignService;
+    private AccountFeignService accountFeignService;
 
     @Autowired
     private OrderMapper orderMapper;
@@ -50,7 +50,7 @@ public class OrderServiceImpl implements OrderService {
         }
 
         //测试Feign调用
-        PojoResult<Account> result = bankAccountFeignService.getBankAccountByUserId(userId);
+        PojoResult<Account> result = accountFeignService.getBankAccountByUserId(userId);
         if (!result.isSuccess()) {
             LOGGER.debug("查询用户Id:[{}]失败,ErrorCode:[{}]", userId, result.getErrorCode());
             return null;

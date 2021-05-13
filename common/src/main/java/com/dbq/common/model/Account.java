@@ -1,5 +1,7 @@
 package com.dbq.common.model;
 
+import com.dbq.common.base.BaseModel;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -9,7 +11,7 @@ import java.util.Date;
  * @author Administrator
  * @create 2018-08-01
  */
-public class Account {
+public class Account extends BaseModel {
 
     /**
      * 账户主键

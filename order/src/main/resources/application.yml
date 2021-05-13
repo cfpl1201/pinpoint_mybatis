@@ -2,7 +2,7 @@ server:
   port: 8000
 spring:
   application:
-    name: spring-cloud-user-server
+    name: spring-cloud-order-server
   datasource:
     username: root
     password: Admin@123

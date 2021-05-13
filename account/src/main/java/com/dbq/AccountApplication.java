@@ -12,9 +12,9 @@ import org.springframework.context.annotation.Import;
 
 @EnableEurekaClient
 @Import({MybatisConfiguration.class, RedisBasicConfig.class})
-@EnableFeignClients({"com.dbq.common.export.user"})
-@MapperScan(basePackages = "com.dbq.provider.mapper", markerInterface = BaseMapper.class)
-@SpringBootApplication(scanBasePackages = {"com.dbq.provider", "com.dbq.common.export.user"})
+@EnableFeignClients({"com.dbq.common.export.order"})
+@MapperScan(basePackages = "com.dbq.mapper", markerInterface = BaseMapper.class)
+@SpringBootApplication(scanBasePackages = {"com.dbq", "com.dbq.common.export.order"})
 public class AccountApplication {
 
     public static void main(String[] args) {
