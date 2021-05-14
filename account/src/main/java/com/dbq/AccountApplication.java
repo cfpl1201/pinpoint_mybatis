@@ -1,6 +1,6 @@
 package com.dbq;
 
-import com.dbq.common.base.BaseMapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.dbq.common.config.MybatisConfiguration;
 import com.dbq.common.redis.RedisBasicConfig;
 import org.mybatis.spring.annotation.MapperScan;

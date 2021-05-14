@@ -1,6 +1,6 @@
 package com.dbq.mapper;
 
-import com.dbq.common.base.BaseMapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.dbq.common.model.Order;
 import org.apache.ibatis.annotations.Param;
 
@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Param;
  * @author dbq
  * @create 2017-12-06 9:23
  */
-public interface OrderMapper extends BaseMapper<Integer, Order> {
+public interface OrderMapper extends BaseMapper<Order> {
 
     /**
      * @param userId

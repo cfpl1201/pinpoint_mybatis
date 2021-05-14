@@ -1,7 +1,9 @@
 package com.dbq.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.dbq.common.export.account.AccountFeignService;
 import com.dbq.common.model.Account;
+import com.dbq.common.model.Order;
 import com.dbq.common.redis.RedisUtils;
 import com.dbq.common.result.PojoResult;
 import com.dbq.util.HttpUtil;
@@ -12,24 +14,23 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 /**
  * @author dbq
  * @create 2018-10-23 9:48
  */
 @Service
-public class OrderServiceImpl implements OrderService {
+public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements OrderService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(OrderServiceImpl.class);
 
     @Autowired
     private AccountFeignService accountFeignService;
 
-    @Autowired
-    private OrderMapper orderMapper;
-
     @Override
     public Account getBankAccount(Integer userId) {
-        boolean exists = orderMapper.selectById(userId) != null;
+        boolean exists = baseMapper.selectById(userId) != null;
         if (!exists) {
             LOGGER.debug("用户Id:[{}]不存在", userId);
             return null;
@@ -57,5 +58,21 @@ public class OrderServiceImpl implements OrderService {
         }
 
         return result.getContent();
+    }
+
+    @Override
+    public void add(Integer userId) {
+        //新增一条订单记录
+        Order order = new Order();
+        order.setUserId(1);
+        order.setProductId(1);
+        order.setCOUNT(1);
+        order.setPayAmount(1D);
+        order.setStatus("1");
+        order.setAddTime(new Date());
+        order.setLastUpdateTime(new Date());
+        baseMapper.insert(order);
+
+        //更新账户信息，模拟分布式事务
     }
 }

@@ -22,4 +22,13 @@ public class OrderController {
         return new PojoResult<>(orderService.getBankAccount(id));
     }
 
+    /**
+     * 模拟下单操作，验证分布式事务
+     * @param id
+     * @return
+     */
+    @GetMapping("/{id}/add")
+    public void add(@PathVariable Integer id) {
+        orderService.add(id);
+    }
 }

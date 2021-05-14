@@ -1,8 +1,7 @@
 package com.dbq.common.model;
 
+import java.io.Serializable;
 import java.util.Date;
-
-import com.dbq.common.base.BaseModel;
 
 /**
  * 数据库表：orders
@@ -10,7 +9,7 @@ import com.dbq.common.base.BaseModel;
  * @author dell-7359
  * @create 2017-10-24
  */
-public class Order extends BaseModel {
+public class Order implements Serializable {
     private Long id;
 
     private Integer userId;
