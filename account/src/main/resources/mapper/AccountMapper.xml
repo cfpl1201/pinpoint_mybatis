@@ -10,16 +10,4 @@
         <result column="balance" jdbcType="DOUBLE" property="balance"/>
     </resultMap>
 
-    <sql id="Base_Column_List">
-        id, user_id, total, last_update_time, used, balance
-    </sql>
-
-    <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from account
-        where id = #{id,jdbcType=INTEGER}
-    </select>
-
-
 </mapper>

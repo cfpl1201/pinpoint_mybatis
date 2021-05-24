@@ -2,7 +2,6 @@ package com.dbq.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.dbq.common.model.Order;
-import org.apache.ibatis.annotations.Param;
 
 /**
  * 银行用户Mapper接口
@@ -16,6 +15,6 @@ public interface OrderMapper extends BaseMapper<Order> {
      * @param userId
      * @return
      */
-    Order selectById(@Param("userId") Integer userId);
+    Order selectByUserId(Integer userId);
 
 }

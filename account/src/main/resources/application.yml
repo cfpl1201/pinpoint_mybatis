@@ -19,8 +19,14 @@ eureka:
   instance:
     prefer-ip-address: true
 
-mybatis:
-  mapper-locations: classpath*:mapper/*.xml
+mybatis-plus:
+  type-aliases-package: com.dbq.common.model
+  mapper-locations: classpath*:/mapper/**/*.xml
+  configuration:
+    # 是否开启自动驼峰命名规则映射:从数据库列名到Java属性驼峰命名的类似映射
+    map-underscore-to-camel-case: true
+    # 如果查询结果中包含空值的列，则 MyBatis 在映射的时候，不会映射这个字段
+    call-setters-on-nulls: true
 
 redis:
   useCluster: false
@@ -28,3 +34,16 @@ redis:
   port: 6379
   auth: 123456
   nodes: 127.0.0.1:6379,127.0.0.1:6380,127.0.0.1:6381
+
+# seata配置
+seata:
+  enabled: true
+  application-id: order-seata
+  tx-service-group: cloud-web_tx_group
+  registry:
+    type: eureka
+    eureka:
+      service-url: http://localhost:8761/eureka
+  service:
+    vgroup-mapping:
+      cloud-web_tx_group: default

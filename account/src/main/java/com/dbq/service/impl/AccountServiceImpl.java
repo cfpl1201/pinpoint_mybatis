@@ -16,20 +16,23 @@ import org.springframework.stereotype.Service;
 @Service
 public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> implements AccountService {
 
+    @Autowired
+    private AccountMapper accountMapper;
     @Override
     public Account getById(Integer id) {
-        return baseMapper.selectById(id);
+        return accountMapper.selectById(id);
     }
 
     @Override
     public void updateAccount(Integer userId) {
         QueryWrapper<Account> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("user_id", userId);
-        Account account = baseMapper.selectById(queryWrapper);
+        Account account = accountMapper.selectOne(queryWrapper);
 
         UpdateWrapper<Account> updateWrapper = new UpdateWrapper<>();
         updateWrapper.eq("user_id", userId);
         updateWrapper.set("balance", account.getBalance()-1);
-        baseMapper.update(account, updateWrapper);
+        this.update(account, updateWrapper);
+
     }
 }

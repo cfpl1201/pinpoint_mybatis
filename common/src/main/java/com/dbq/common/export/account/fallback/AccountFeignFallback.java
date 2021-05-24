@@ -19,4 +19,9 @@ public class AccountFeignFallback implements AccountFeignService {
     public PojoResult<Account> getBankAccountByUserId(Integer userId) {
         return ErrorResultGenerator.generatePojoResult(SYSTEM_ERROR, null);
     }
+
+    @Override
+    public PojoResult<Account> updateAccount(Integer userId) {
+        return ErrorResultGenerator.generatePojoResult(SYSTEM_ERROR, null);
+    }
 }

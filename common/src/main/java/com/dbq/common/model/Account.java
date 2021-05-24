@@ -1,5 +1,9 @@
 package com.dbq.common.model;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,11 +13,13 @@ import java.util.Date;
  * @author Administrator
  * @create 2018-08-01
  */
+@TableName(value = "account")
 public class Account implements Serializable {
 
     /**
      * 账户主键
      */
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     /**

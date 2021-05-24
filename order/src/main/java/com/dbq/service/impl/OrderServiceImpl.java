@@ -9,6 +9,7 @@ import com.dbq.common.result.PojoResult;
 import com.dbq.util.HttpUtil;
 import com.dbq.mapper.OrderMapper;
 import com.dbq.service.OrderService;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
 
     @Override
     public Account getBankAccount(Integer userId) {
-        boolean exists = baseMapper.selectById(userId) != null;
+        boolean exists = baseMapper.selectByUserId(userId) != null;
         if (!exists) {
             LOGGER.debug("用户Id:[{}]不存在", userId);
             return null;
@@ -66,13 +67,14 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         Order order = new Order();
         order.setUserId(1);
         order.setProductId(1);
-        order.setCOUNT(1);
         order.setPayAmount(1D);
         order.setStatus("1");
         order.setAddTime(new Date());
         order.setLastUpdateTime(new Date());
-        baseMapper.insert(order);
+        this.save(order);
 
         //更新账户信息，模拟分布式事务
+        accountFeignService.updateAccount(userId);
+
     }
 }

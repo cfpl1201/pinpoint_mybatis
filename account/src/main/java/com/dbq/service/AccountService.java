@@ -5,8 +5,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.dbq.common.model.Account;
 
 /**
- * @author dbq
- * @create 2018-10-19 16:56
+ * @author admin
  */
 public interface AccountService extends IService<Account> {
 

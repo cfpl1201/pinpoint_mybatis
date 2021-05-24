@@ -1,5 +1,9 @@
 package com.dbq.common.model;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,14 +13,14 @@ import java.util.Date;
  * @author dell-7359
  * @create 2017-10-24
  */
+@TableName(value = "orders")
 public class Order implements Serializable {
+    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     private Integer userId;
 
     private Integer productId;
-
-    private Integer COUNT;
 
     private Double payAmount;
 
@@ -48,14 +52,6 @@ public class Order implements Serializable {
 
     public void setProductId(Integer productId) {
         this.productId = productId;
-    }
-
-    public Integer getCOUNT() {
-        return COUNT;
-    }
-
-    public void setCOUNT(Integer COUNT) {
-        this.COUNT = COUNT;
     }
 
     public Double getPayAmount() {

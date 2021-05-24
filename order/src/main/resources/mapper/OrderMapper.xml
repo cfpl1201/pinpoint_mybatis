@@ -5,7 +5,6 @@
         <id column="id" jdbcType="INTEGER" property="id"/>
         <id column="user_id" jdbcType="INTEGER" property="userId"/>
         <id column="product_id" jdbcType="INTEGER" property="productId"/>
-        <id column="COUNT" jdbcType="INTEGER" property="COUNT"/>
         <id column="pay_amount" jdbcType="DOUBLE" property="payAmount"/>
         <id column="status" jdbcType="VARCHAR" property="status"/>
         <result column="add_time" jdbcType="TIMESTAMP" property="addTime"/>
@@ -18,9 +17,9 @@
 
     <sql id="Base_Column_List">
         <!--@mbg.generated-->
-        id, user_id, product_id, COUNT, pay_amount, status, add_time, last_update_time
+        id, user_id, product_id, pay_amount, status, add_time, last_update_time
     </sql>
-    <select id="selectById" resultMap="BaseResultMap">
+    <select id="selectByUserId" resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column_List"/>
         FROM orders WHERE user_id = #{userId,jdbcType=INTEGER}

@@ -3,6 +3,7 @@ package com.dbq.controller;
 import com.dbq.common.model.Account;
 import com.dbq.common.result.PojoResult;
 import com.dbq.service.AccountService;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,5 +30,18 @@ public class AccountController {
     @GetMapping("/{userId}")
     public PojoResult<Account> getAccount(@PathVariable Integer userId) {
         return new PojoResult<>(accountService.getById(userId));
+    }
+
+    /**
+     * 更新账号信息
+     *
+     * @param userId
+     * @return
+     */
+    @GlobalTransactional
+    @GetMapping("/update/{userId}")
+    public PojoResult<Account> update(@PathVariable Integer userId) {
+        accountService.updateAccount(userId);
+        return new PojoResult<>();
     }
 }

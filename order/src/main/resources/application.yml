@@ -18,8 +18,10 @@ eureka:
       defaultZone: http://${eureka.host:localhost}:${eureka.port:8761}/eureka/
   instance:
     prefer-ip-address: true
-mybatis:
+
+mybatis-plus:
   mapper-locations: classpath*:mapper/*.xml
+  typeAliasesPackage: com.dbq.common.model
 
 redis:
   useCluster: false
@@ -27,3 +29,16 @@ redis:
   port: 6379
   auth: 123456
   nodes: 127.0.0.1:6379,127.0.0.1:6380,127.0.0.1:6381
+
+# seata配置
+seata:
+  enabled: true
+  application-id: order-seata
+  tx-service-group: cloud-web_tx_group
+  registry:
+    type: eureka
+    eureka:
+      service-url: http://${eureka.host:localhost}:${eureka.port:8761}/eureka/
+  service:
+    vgroup-mapping:
+      cloud-web_tx_group: default

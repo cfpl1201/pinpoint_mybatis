@@ -22,4 +22,6 @@ public interface AccountFeignService {
     @GetMapping("/account/{userId}")
     PojoResult<Account> getBankAccountByUserId(@PathVariable("userId") Integer userId);
 
+    @GetMapping("/account/update/{userId}")
+    PojoResult<Account> updateAccount(@PathVariable("userId") Integer userId);
 }
